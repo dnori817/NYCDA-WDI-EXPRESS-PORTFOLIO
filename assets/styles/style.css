@@ -1,0 +1,176 @@
+@font-face {
+    font-family: "PressStart2P";
+    src: url(../images/fonts/PressStart2P.ttf) format("truetype");
+}
+
+/*@font-face {
+    font-family: "finalf";
+    src: url(../images/fonts/finalf.ttf) format("truetype");
+}*/
+
+@font-face {
+    font-family: "DisposableDroidBB_ital";
+    src: url(../images/fonts/DisposableDroidBB_ital.otf) format("opentype");
+}
+
+* {
+	font-family: "DisposableDroidBB_ital"
+}
+
+body {
+	background-color: #23745A;
+}
+
+nav {
+	display: inline;
+	width: 100%;
+	background-color: #23745A;
+}
+
+header {
+	color: white;
+	height: 420px;
+	width: 100%;
+	background-image: url("../images/dnbg1.jpg");
+	background-size: cover;
+	margin-top: -80px;
+	border-bottom: 5px solid black;
+}
+
+#name {
+/*	font-family: "PressStart2P";
+*/	color: #4D0101;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	font-size: 100px;
+}
+
+#menu {
+/*	margin-bottom: 10px;
+*/}
+
+#menu li {
+	float: right;
+	display: inline;
+	font-size: 40px;
+	padding: 10px;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	color: #23745A;
+}
+
+.title {
+	font-size: 60px;
+	color: #23745A;
+	padding-top: 15px;
+	padding-left: 35px;
+	/*text-align: ;*/
+}
+
+.text {
+	color: #4D0101;
+	font-size: 30px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+footer {
+	font-family: "PressStart2P";
+	height: 30px;
+	background-color: black;
+	color: #4D0101;
+	text-align: center;
+	padding-top: 10px;
+	clear: both;
+
+}
+#gallery {
+	padding: 0px;
+}
+
+#gallery div {
+	background-repeat: no-repeat;
+	border: 5px solid black;
+	border-radius: 2%;
+	background-size: cover;
+	display: block;
+	margin: 5px;
+	height: 502px;
+	width: 502px;
+	float: left;
+}
+
+
+.img1 {
+	background-image: url("../images/gallery/image-1-large.jpg");
+}
+
+.img2 {
+	background-image: url("../images/gallery/image-2-large.jpg");
+}
+
+.img3 {
+	background-image: url("../images/gallery/image-3-large.jpg");
+}
+
+
+@media all and (max-width: 1040px){
+
+	#gallery div {
+		float: none;
+		margin: 10px auto;
+	}
+}
+
+
+@media all and (max-width: 570px){
+	header {
+		margin-top: -30px;
+	}
+
+	#name {
+		font-size: 60px;
+		margin: 10px;
+		margin-top: 20px;
+		padding: 10px;
+	}
+
+	#title {
+		font-size: 30px;
+	}
+
+	#menu {
+		margin-right: 10px;
+	}
+
+	#menu li {
+		font-size: 28px;
+		margin-top: 90px;
+	}
+
+	#gallery div {
+		height: 300px;
+		width: 300px;
+		margin: 5px auto;
+	}
+
+  	.img1 {
+  		background-image: url("../images/gallery/image-1-small.jpg");
+  	}
+
+  	.img2 {
+  		background-image: url("../images/gallery/image-2-small.jpg");
+  	}
+
+  	.img3 {
+  		background-image: url("../images/gallery/image-3-small.jpg");
+  	}
+
+}
