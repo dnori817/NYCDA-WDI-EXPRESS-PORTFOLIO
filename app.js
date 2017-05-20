@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const countries = require("./json/country-info.json");
 
 app.use(express.static("assets"));
 app.set("view engine", "ejs");
@@ -17,10 +18,10 @@ app.set("view engine", "ejs");
 // 			 text: "About",
 // 			 href: "/",
 // 		 }];
-
+//
 // function adjustMenu() {
 //
-// 	if  ( menu.text. toLowerCase === page) {
+// 	if  (menu.text. toLowerCase === page) {
 //
 //
 // 	}
@@ -65,6 +66,36 @@ app.get("/gallery", function(req, res) {
 			href: "/",
 		}],
 
+	});
+});
+
+app.get("/countries", function(req, res) {
+	// res.render("template", {
+	// 	page: "country",
+	// 	title: "Country Info",
+	// 	menu: [{
+	// 		text: "Contact",
+	// 		href: "#",
+	// 	}, {
+	// 		text: "Portfolio",
+	// 		href: "#",
+	// 	}, {
+	// 		text: "About",
+	// 		href: "/",
+	// 	}],
+	// });
+	res.render("country",  {
+		country: countries.USA,
+	});
+});
+
+app.get("*", function(req, res) {
+	// res.send("This is not a valid page, go away!");
+	// res.render("404");
+	res.render("template", {
+		page: "404",
+		title: "",
+		menu: [],
 	});
 });
 
