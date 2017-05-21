@@ -1,11 +1,26 @@
-<h1> <%= country.name %> </h1>
-<h3> <%= country.nativeName %> </h3>
-<p>
-	Population: <%= country.population %>
-</p>
-<p>
-	Region: <%= country.region %>
-</p>
-<div class="flag">
-	<img src="<%= country.flag %>" >
-</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Country Info</title>
+		
+		<link rel="stylesheet" type="text/css" href="../styles/style.css">
+	</head>
+	<body>
+		<div class="country">
+
+		<h1 class="country-name"> <%= country.name %> </h1>
+		<h3 class="country-native"> <%= country.nativeName %> </h3>
+		<p class="country-pop">
+			Population: <%= country.population %>
+		</p>
+		<p class="country-region">
+			Region: <%= country.region %>
+		</p>
+		<div class="country-flag">
+			<img src="<%= country.flag %>" >
+		</div>
+	</div>
+
+	</body>
+</html>

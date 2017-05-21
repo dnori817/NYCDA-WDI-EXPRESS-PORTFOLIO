@@ -8,7 +8,3 @@ router.get("/countries", function(req, res) {
 
 
 module.exports = router;
-
-
-
-//const country = datafile.countryID
