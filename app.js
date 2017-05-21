@@ -69,23 +69,14 @@ app.get("/gallery", function(req, res) {
 	});
 });
 
-app.get("/countries", function(req, res) {
-	// res.render("template", {
-	// 	page: "country",
-	// 	title: "Country Info",
-	// 	menu: [{
-	// 		text: "Contact",
-	// 		href: "#",
-	// 	}, {
-	// 		text: "Portfolio",
-	// 		href: "#",
-	// 	}, {
-	// 		text: "About",
-	// 		href: "/",
-	// 	}],
-	// });
+app.get("/countries/:countryId", function(req, res) {
+	let country = countries[req.params.countryId];
+	if (!country) {
+		res.status(404);
+		res.render("404");
+	}
 	res.render("country",  {
-		country: countries.USA,
+		country,
 	});
 });
 
