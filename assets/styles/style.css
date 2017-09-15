@@ -106,6 +106,15 @@ footer {
 	float: left;
 }
 
+.formlink {
+	float: right;
+	font-size: 32px;
+}
+
+li {
+	font-size: 32px;
+}
+
 
 .img1 {
 	background-image: url("../images/gallery/image-1-large.jpg");
@@ -173,6 +182,7 @@ footer {
   	}
 
 }
+
 
 
 

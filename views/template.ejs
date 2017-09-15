@@ -19,14 +19,12 @@
 		<br>
 		<h1 class="title"> <%= title %> </h1>
 		<ul id="menu">
-			<%# <li><a href="#">Contact</a></li>
+			<li><a href="./blog">Blog</a></li>
+
+			<li><a href="#">Contact</a></li>
 			<li><a href="#">Portfolio</a></li>
 			<li><a href="./gallery">Gallery</a></li>
-			<li><a href="./">About</a></li>%>
-			<% for(let i = 0;  i< menu.length; i++) { %>
-				<a class="menu-item" href="<%= menu[i].href %>">
-				<li><%= menu[i].text %></li>
-			<%	} %>
+			<li><a href="./">About</a></li>
 
 		</ul>
 	</header>

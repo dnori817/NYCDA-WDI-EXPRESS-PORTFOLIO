@@ -74,8 +74,8 @@ app.get("/form", function(req, res) {
 	renderTemplate(res, "form", "Form");
 });
 
-app.post("/blog", function(req, res) {
-	Blog.create({
+app.post("/form", function(req, res) {
+	Posts.create({
 		title: req.body.title,
 		date: req.body.date,
 		body: req.body.body,
