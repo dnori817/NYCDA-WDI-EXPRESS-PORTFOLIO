@@ -41,15 +41,15 @@ function renderTemplate(res, page, title, pageArgs) {
 	});
 }
 
-function renderBlog(res, title, date, body) {
-	Posts.findAll().then(function(posts) {
-		res.render("blog", {
-			title: title,
-			date: date,
-			body: body,
-		});
-	});
-}
+// function renderBlog(res, title, date, body) {
+// 	Posts.findAll().then(function(posts) {
+// 		res.render("blog", {
+// 			title: title,
+// 			date: date,
+// 			body: body,
+// 		});
+// 	});
+// }
 
 app.get("/", function(req, res) {
 	console.log("Serving up homepage...");
@@ -67,9 +67,9 @@ app.get("/blog", function(req, res, posts) {
 		renderTemplate(res, "blog", "Blog", { posts: posts });
 	});
 });
-app.get("/blog", function(req, res) {
-	renderBlog(res);
-});
+// app.get("/blog", function(req, res) {
+// 	renderBlog(res);
+// });
 app.get("/form", function(req, res) {
 	renderTemplate(res, "form", "Form");
 });
@@ -81,7 +81,7 @@ app.post("/form", function(req, res) {
 		body: req.body.body,
 	})
 	.then(function() {
-		renderBlog(res);
+		res.redirect("/blog");
 	});
 });
 
