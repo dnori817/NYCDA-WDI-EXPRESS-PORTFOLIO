@@ -17,9 +17,10 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 
-function renderTemplate(res, page, title) {
+function renderTemplate(res, page, title, pageArgs) {
 	return res.render("template", {
 		page: page,
+		pageArgs: pageArgs || {},
 		title: title,
 		menu: [{
 			 text: "Contact",
@@ -66,6 +67,9 @@ app.get("/blog", function(req, res, posts) {
 		renderTemplate(res, "blog", "Blog", { posts: posts });
 	});
 });
+app.get("/blog", function(req, res) {
+	renderBlog(res);
+});
 app.get("/form", function(req, res) {
 	renderTemplate(res, "form", "Form");
 });
@@ -81,9 +85,6 @@ app.post("/blog", function(req, res) {
 	});
 });
 
-app.get("/blog", function(req, res) {
-	renderBlog(res);
-});
 
 
 
