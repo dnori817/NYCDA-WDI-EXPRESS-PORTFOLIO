@@ -85,6 +85,10 @@ app.post("/form", function(req, res) {
 	});
 });
 
+app.get("*", function(req, res) {
+	renderTemplate(res,"404");
+});
+
 
 
 
