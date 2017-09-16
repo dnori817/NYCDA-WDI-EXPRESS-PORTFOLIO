@@ -88,6 +88,7 @@ footer {
 	text-align: center;
 	padding-top: 10px;
 	clear: both;
+	bottom: 0;
 
 }
 #gallery {
@@ -109,6 +110,7 @@ footer {
 .form {
 	width: 50%;
  	margin: 0 auto;
+	padding:20px;
 }
 
 .formlink {

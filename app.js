@@ -60,7 +60,7 @@ app.get("/blog", function(req, res, posts) {
 });
 
 app.get("/form", function(req, res) {
-	renderTemplate(res, "form", "Form");
+	renderTemplate(res, "form", "New Post");
 });
 
 app.post("/form", function(req, res) {
