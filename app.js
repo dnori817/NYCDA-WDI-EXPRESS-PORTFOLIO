@@ -117,7 +117,7 @@ sql.sync().then(function() {
 	const port = process.env.PORT || 3000;
 
 
-	app.listen(3000, function() {
+	app.listen(port, function() {
 		console.log("Your server is available at http://localhost:3000");
 	});
 });
