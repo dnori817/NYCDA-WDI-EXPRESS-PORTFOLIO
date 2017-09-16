@@ -9,9 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 
 	<title>Dave Noriega</title>
-	<%# <link rel="icon"
+	<link rel="icon"
       type="image/png"
-      href="images/Blackmage-ff1-nes.png">%>
+      href="images/Blackmage-ff1-nes.png">
 </head>
 <body>
 	<header>
@@ -19,19 +19,19 @@
 		<br>
 		<h1 class="title"> <%= title %> </h1>
 		<ul id="menu">
-			<li><a href="./blog">Blog</a></li>
 
-			<li><a href="#">Contact</a></li>
-			<li><a href="#">Portfolio</a></li>
-			<li><a href="./gallery">Gallery</a></li>
-			<li><a href="./">About</a></li>
+			<% for(let i = 0; i < menu.length; i++) { %>
+				<a class="menu-item" href="<%= menu[i].href %>">
+				<li><%= menu[i].text %></li>
+				</a>
+			<%	} %>
 
 		</ul>
 	</header>
 		<main>
 			<%- include(page, pageArgs); %>
 		</main>
-	<footer>&copy David Noriega 2017</footer>
+	<footer> &copy David Noriega 2017 </footer>
 
 </body>
 </html>

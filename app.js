@@ -41,15 +41,6 @@ function renderTemplate(res, page, title, pageArgs) {
 	});
 }
 
-// function renderBlog(res, title, date, body) {
-// 	Posts.findAll().then(function(posts) {
-// 		res.render("blog", {
-// 			title: title,
-// 			date: date,
-// 			body: body,
-// 		});
-// 	});
-// }
 
 app.get("/", function(req, res) {
 	console.log("Serving up homepage...");
@@ -67,9 +58,7 @@ app.get("/blog", function(req, res, posts) {
 		renderTemplate(res, "blog", "Blog", { posts: posts });
 	});
 });
-// app.get("/blog", function(req, res) {
-// 	renderBlog(res);
-// });
+
 app.get("/form", function(req, res) {
 	renderTemplate(res, "form", "Form");
 });
@@ -83,10 +72,6 @@ app.post("/form", function(req, res) {
 	.then(function() {
 		res.redirect("/blog");
 	});
-});
-
-app.get("*", function(req, res) {
-	renderTemplate(res,"404");
 });
 
 
@@ -106,11 +91,11 @@ app.get("*", function(req, res) {
 // 	}
 // 	res.render("country",  { country });
 // });
-//
-//
-// app.get("*", function(req, res) {
-// 	renderTemplate(res, "404", "PAGE NOT FOUND!!!");
-// });
+
+
+app.get("*", function(req, res) {
+	renderTemplate(res, "404", "PAGE NOT FOUND!!!");
+});
 
 sql.sync().then(function() {
 	console.log("Database synced");
