@@ -16,12 +16,13 @@
 <body>
 	<header>
 		<h1 id="name">Dave Noriega</h1>
+
 		<br>
 		<h1 class="title"> <%= title %> </h1>
 		<ul id="menu">
 
 			<% for(let i = 0; i < menu.length; i++) { %>
-				<a class="menu-item" href="<%= menu[i].href %>">
+				<a class="menu-item" href="<%= menu[i].href %>" target="<%= menu[i].target %>">
 				<li><%= menu[i].text %></li>
 				</a>
 			<%	} %>

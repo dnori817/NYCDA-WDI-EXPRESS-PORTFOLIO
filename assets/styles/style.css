@@ -19,11 +19,11 @@
 
 body {
 	background-color: #23745A;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
 }
 
 nav {
 	display: inline;
-	width: 100%;
 	background-color: #23745A;
 }
 
@@ -43,11 +43,35 @@ header {
 	padding-left: 10px;
 	padding-bottom: 5px;
 	font-size: 100px;
+	text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
+
+}
+
+#contact {
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	float: left;
+	padding-top: 20px;
 }
 
 #menu {
 /*	margin-bottom: 10px;
 */}
+
+.icon {
+	height: 100px;
+	width: 100px;
+	/*padding: 50px;*/
+	padding-top: 15px;
+}
+
+.icon2 {
+	height: 115px;
+	width: 115px;
+	/*padding-bottom: 45px;*/
+
+}
 
 .menu-item {
 	float: right;
@@ -70,6 +94,7 @@ header {
 	color: #23745A;
 	padding-top: 15px;
 	padding-left: 35px;
+	bottom: 0;
 	/*text-align: ;*/
 }
 
@@ -89,6 +114,8 @@ footer {
 	padding-top: 10px;
 	clear: both;
 	bottom: 0;
+	width: 100%;
+	position: fixed;
 
 }
 #gallery {
@@ -96,15 +123,20 @@ footer {
 }
 
 #gallery div {
+	display: block;
+	float: left;
+}
+
+.screenshot {
 	background-repeat: no-repeat;
 	border: 5px solid black;
 	border-radius: 2%;
 	background-size: cover;
-	display: block;
+	/*display: block;*/
 	margin: 5px;
-	height: 502px;
-	width: 502px;
-	float: left;
+	height: 300px;
+	width: 300px;
+	/*float: left;*/
 }
 
 .form {
@@ -167,7 +199,7 @@ li {
 
 	#menu li {
 		font-size: 28px;
-		margin-top: 90px;
+		/*margin-top: 90px;*/
 	}
 
 	#gallery div {

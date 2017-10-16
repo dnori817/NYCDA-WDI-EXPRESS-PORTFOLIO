@@ -24,19 +24,20 @@ function renderTemplate(res, page, title, pageArgs) {
 		title: title,
 		menu: [{
 			 text: "Contact",
-			 href: "#",
+			 href: "/contact",
 		 }, {
 			 text: "Portfolio",
-			 href: "#",
+			 href: "/portfolio",
 		 }, {
-			 text: "Gallery",
-			 href: "/gallery",
+			 text: "Resume",
+			 href: "/David-Noriega-Resume-2017.pdf",
+			 target: "_blank",
 		 }, {
 			 text: "About",
 			 href: "/",
-		 }, {
-			 text: "Blog",
-			 href: "/blog",
+		//  }, {
+		// 	 text: "Blog",
+		// 	 href: "/blog",
 		 }],
 	});
 }
@@ -44,13 +45,18 @@ function renderTemplate(res, page, title, pageArgs) {
 
 app.get("/", function(req, res) {
 	console.log("Serving up homepage...");
-	renderTemplate(res, "about", "About Me");
+	renderTemplate(res, "about", "Full Stack Web Developer");
 });
 
 
-app.get("/gallery", function(req, res) {
-	console.log("Opening gallery...");
-	renderTemplate(res, "gallery", "Gallery");
+app.get("/contact", function(req, res) {
+	console.log("Opening contact page...");
+	renderTemplate(res, "contact", "Contact Dave");
+});
+
+app.get("/portfolio", function(req, res) {
+	console.log("Opening portfolio page...");
+	renderTemplate(res, "portfolio", "Portfolio");
 });
 
 app.get("/blog", function(req, res, posts) {
@@ -75,6 +81,9 @@ app.post("/form", function(req, res) {
 });
 
 
+app.get("*", function(req, res) {
+	renderTemplate(res, "404", "PAGE NOT FOUND!!!");
+});
 
 
 
@@ -93,9 +102,6 @@ app.post("/form", function(req, res) {
 // });
 
 
-app.get("*", function(req, res) {
-	renderTemplate(res, "404", "PAGE NOT FOUND!!!");
-});
 
 sql.sync().then(function() {
 	console.log("Database synced");
