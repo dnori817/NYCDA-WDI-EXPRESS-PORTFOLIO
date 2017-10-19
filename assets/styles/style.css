@@ -132,11 +132,16 @@ footer {
 	border: 5px solid black;
 	border-radius: 2%;
 	background-size: cover;
-	/*display: block;*/
-	margin: 5px;
+	display: block;
+	margin: 20px;
+	height: 250px;
+	width: 450px;
+	/*float: left;*/
+}
+
+.description {
 	height: 300px;
 	width: 300px;
-	/*float: left;*/
 }
 
 .form {
@@ -154,17 +159,19 @@ li {
 	font-size: 32px;
 }
 
-
-.img1 {
-	background-image: url("../images/gallery/image-1-large.jpg");
+.img4 {
+	background-image: url("../images/gallery/photo.png");
+}
+.img3 {
+	background-image: url("../images/gallery/robocop.png");
 }
 
 .img2 {
-	background-image: url("../images/gallery/image-2-large.jpg");
+	background-image: url("../images/gallery/brainpain.png");
 }
 
-.img3 {
-	background-image: url("../images/gallery/image-3-large.jpg");
+.img1 {
+	background-image: url("../images/gallery/ecomm.png");
 }
 
 
