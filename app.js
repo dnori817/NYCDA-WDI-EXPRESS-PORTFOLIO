@@ -23,15 +23,12 @@ function renderTemplate(res, page, title, pageArgs) {
 		pageArgs: pageArgs || {},
 		title: title,
 		menu: [{
-			 text: "Contact",
-			 href: "/contact",
+			text: "Resume",
+			href: "/David-Noriega-Resume-2017.pdf",
+			target: "_blank",
 		 }, {
 			 text: "Portfolio",
 			 href: "/portfolio",
-		 }, {
-			 text: "Resume",
-			 href: "/David-Noriega-Resume-2017.pdf",
-			 target: "_blank",
 		 }, {
 			 text: "About",
 			 href: "/",
