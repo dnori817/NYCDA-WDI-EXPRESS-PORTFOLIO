@@ -9,22 +9,23 @@
 }*/
 
 @font-face {
-    font-family: "DisposableDroidBB_ital";
-    src: url(../images/fonts/DisposableDroidBB_ital.otf) format("opentype");
+    font-family: "main-font";
+    src: url(../images/fonts/blrrpix.ttf) format("truetype");
 }
 
 * {
-	font-family: "DisposableDroidBB_ital"
+	font-family: "main-font";
 }
 
 body {
-	background-color: #23745A;
+	background-color: #009688;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
+	color: #212121;
 }
 
 nav {
 	display: inline;
-	background-color: #23745A;
+	background-color: #009688;
 }
 
 header {
@@ -35,16 +36,16 @@ header {
 	background-image: url("../images/dnbg1.jpg");
 	background-size: cover;
 
-	border-bottom: 5px solid black;
+	border-bottom: 5px solid #212121;
 }
 
 #name {
 /*	font-family: "PressStart2P";
-*/	color: #4D0101;
+*/	color: #ffab00;
 	padding-left: 10px;
 	padding-bottom: 5px;
 	font-size: 120px;
-	text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
+	text-shadow: 1px 1px 1px rgba(33, 33, 33, 0.9);
 	/*margin-bottom: 0px;
 	margin-top: 0px;*/
 	margin: 0px;
@@ -96,6 +97,16 @@ header {
 
 }
 
+.header-contact a {
+	text-decoration: none;
+	color: white;
+}
+
+.header-contact a:hover {
+	color: #009688;
+
+}
+
 .header-contact li {
 	font-size: 25px;
 	/*position: fixed;*/
@@ -118,12 +129,12 @@ header {
 
 
 .menu-item:hover {
-	color: #23745A;
+	color: #009688;
 }
 
 .title {
 	font-size: 60px;
-	color: #23745A;
+	color: #009688;
 	/*padding: 25px;*/
 	width: 50%;
 	padding-left: 25px;
@@ -136,7 +147,7 @@ header {
 }
 
 .text {
-	color: #4D0101;
+	color: #ffab00;
 	font-size: 30px;
 	padding-left: 10px;
 	padding-bottom: 10px;
@@ -144,9 +155,9 @@ header {
 
 footer {
 	font-family: "PressStart2P";
-	height: 30px;
-	background-color: black;
-	color: #4D0101;
+	height: 35px;
+	background-color: #212121;
+	color: #ffab00;
 	text-align: center;
 	padding-top: 10px;
 	clear: both;
@@ -154,6 +165,12 @@ footer {
 	width: 100%;
 	position: fixed;
 
+}
+.contact-link {
+	float: right;
+	clear: both;
+	padding-right: 10px;
+	padding-bottom: 20px
 }
 #gallery {
 	padding: 0px;
@@ -166,7 +183,7 @@ footer {
 
 .screenshot {
 	background-repeat: no-repeat;
-	border: 5px solid black;
+	border: 5px solid #212121;
 	border-radius: 2%;
 	background-size: cover;
 	display: block;
@@ -246,16 +263,20 @@ li {
 	#menu li {
 		font-size: 28px;
 		/*margin-top: 90px;*/
+
 	}
 
 	.header-contact {
 		margin-top: -160px;
 	}
 
-	#gallery div {
+	.screenshot {
 		height: 150px;
 		width: 300px;
 		margin: 5px auto;
+	}
+
+	.description {
 	}
 
   	/*.img1 {

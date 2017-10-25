@@ -17,10 +17,10 @@
 	<header>
 		<h1 id="name">Dave Noriega</h1>
 		<ul class="header-contact">
-			<li>dnori817@gmail.com</li>
-			<li>(631)336-8656</li>
-			<li>Linkedin</li>
-			<li>Github</li>
+			<li><a href="mailto:dnori817@gmail.com">dnori817@gmail.com</a></li>
+			<li><a href="tel:+16313368656">(631)336-8656</a></li>
+			<li><a href="https://www.linkedin.com/in/david-noriega-353773147" target= "_blank">Linkedin</a></li>
+			<li><a href="https://github.com/dnori817" target= "_blank">Github</a></li>
 		</ul>
 		<h1 class="title"> <%= title %> </h1>
 
@@ -37,7 +37,10 @@
 		<main>
 			<%- include(page, pageArgs); %>
 		</main>
-	<footer> &copy David Noriega 2017 </footer>
+	<footer>
+		<span class="contact-link">Contact</span>
+		&copy David Noriega 2017
+	</footer>
 
 </body>
 </html>
