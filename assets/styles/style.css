@@ -30,7 +30,7 @@ nav {
 
 header {
 	color: white;
-	height: 420px;
+	height: 400px;
 	width: 100%;
 	margin: 0;
 	background-image: url("../images/dnbg1.jpg");
@@ -68,9 +68,9 @@ header {
 	/*width: 50%;*/
 	clear: both;
 	/*-webkit-padding-start: 0px;*/
-	padding: 0px;
+	/*padding: 10px;*/
 
-	margin-top: -50px;
+	/*margin-top: -50px;*/
 /*	margin-bottom: 10px;
 */}
 
@@ -136,13 +136,13 @@ header {
 	font-size: 60px;
 	color: #009688;
 	/*padding: 25px;*/
-	width: 50%;
+	/*width: 50%;*/
 	padding-left: 25px;
-	margin-top: 180px;
+	/*margin-top: 180px;*/
 	bottom: 0;
 	float: left;
 	text-align: left;
-	clear: left;
+	clear: both;
 
 }
 
@@ -154,26 +154,41 @@ header {
 }
 
 footer {
-	font-family: "PressStart2P";
-	font-size: 18px;
-	height: 50px;
+	/*font-family: "PressStart2P";*/
+	height: 40px;
 	background-color: #212121;
 	color: #ffab00;
 	text-align: center;
-	padding-top: 25px;
+	/*line-height: 10px;*/
+	/*padding-top: 25px;*/
 	/*padding-bottom: 15px;*/
+	/*padding: 10px;*/
+	/*padding-top: 20px;*/
 	clear: both;
 	bottom: 0;
 	width: 100%;
 	position: fixed;
 
 }
+footer h6 {
+	margin-top: -10px;
+	font-size: 24px;
+	padding: 10px;
+}
 .contact-link {
+	color: white;
 	float: right;
 	clear: both;
-	padding-right: 15px;
-	font-size: 24px;
-	padding-bottom: 40px;
+	margin-top: 5px;
+	/*margin-left: -55px;*/
+	font-size: 18px;
+	text-decoration: none;
+	/*padding-bottom: 10px;*/
+	/*width: 40%;*/
+}
+.contact-link:hover {
+	color: #009688;
+
 }
 #gallery {
 	padding: 0px;
@@ -242,14 +257,14 @@ li {
 
 @media all and (max-width: 700px){
 	#name {
-		font-size: 60px;
+		font-size: 68px;
 		margin: 10px;
 		margin-top: 20px;
 		padding: 10px;
 	}
 
 	#title {
-		font-size: 30px;
+		font-size: 32px;
 		/*margin-bottom: 40px;*/
 	}
 
@@ -264,33 +279,36 @@ li {
 @media all and (max-width: 570px){
 	header {
 		margin-top: -30px;
+		margin-bottom: 60px;
+		height: 300px;
+
 	}
 
 	#name {
-		font-size: 60px;
+		font-size: 48px;
 		margin: 10px;
 		margin-top: 20px;
 		padding: 10px;
 	}
 
-	#title {
-		font-size: 30px;
-		margin-top: -10px;
+	.title {
+		font-size: 32px;
+		/*margin-top: -200px;*/
 	}
 
 	#menu {
 		margin-right: 10px;
-		margin-top: -65px;
+		margin-top: 0px;
 	}
 
 	#menu li {
-		font-size: 28px;
+		font-size: 24px;
 		/*margin-top: 90px;*/
 
 	}
 
 	.header-contact {
-		margin-top: -160px;
+		/*margin-top: -160px;*/
 	}
 
 	.screenshot {
