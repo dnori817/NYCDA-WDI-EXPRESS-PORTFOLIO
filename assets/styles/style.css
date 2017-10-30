@@ -40,8 +40,7 @@ header {
 }
 
 #name {
-/*	font-family: "PressStart2P";
-*/	color: #ffab00;
+	color: #ffab00;
 	padding-left: 10px;
 	padding-bottom: 5px;
 	font-size: 120px;
@@ -59,8 +58,25 @@ header {
 	text-align: center;
 	margin: auto;
 	float: left;
-	padding-top: 20px;
+	padding-bottom: 40px;
 }
+
+#contact div {
+	margin-bottom: 30px;
+}
+
+.contact-page-link {
+	text-decoration: none;
+	/*color: white;*/
+	color: #ffab00;
+	font-size: 24px;
+}
+
+.contact-page-link:hover {
+		/*color: #009688;*/
+		color: white;
+}
+
 
 #menu {
 	float: right;
@@ -151,6 +167,18 @@ header {
 	font-size: 30px;
 	padding-left: 10px;
 	padding-bottom: 10px;
+	margin-bottom: 40px;
+}
+
+.lang-icons {
+	/*display: inline;*/
+
+}
+
+.lang-icons svg {
+	float: left;
+	padding: 15px;
+	margin: 10px;
 }
 
 footer {
@@ -158,7 +186,7 @@ footer {
 	height: 40px;
 	background-color: #212121;
 	color: #ffab00;
-	text-align: center;
+	text-align: right;
 	/*line-height: 10px;*/
 	/*padding-top: 25px;*/
 	/*padding-bottom: 15px;*/
@@ -177,7 +205,7 @@ footer h6 {
 }
 .contact-link {
 	color: white;
-	float: right;
+	float: left;
 	clear: both;
 	margin-top: 5px;
 	/*margin-left: -55px;*/
