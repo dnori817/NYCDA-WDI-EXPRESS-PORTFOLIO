@@ -17,6 +17,11 @@
 	font-family: "main-font";
 }
 
+a {
+	text-decoration: none;
+
+}
+
 body {
 	background-color: #009688;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
@@ -33,7 +38,7 @@ header {
 	height: 400px;
 	width: 100%;
 	margin: 0;
-	background-image: url("../images/dnbg1.jpg");
+	background-image: url("../images/dnbg2.jpg");
 	background-size: cover;
 
 	border-bottom: 5px solid #212121;
@@ -63,18 +68,19 @@ header {
 
 #contact div {
 	margin-bottom: 30px;
+	color: #ffab00;
+
 }
 
 .contact-page-link {
 	text-decoration: none;
-	/*color: white;*/
-	color: #ffab00;
+	color: white;
 	font-size: 24px;
 }
 
 .contact-page-link:hover {
-		/*color: #009688;*/
-		color: white;
+		color: #212121;
+		/*color: white;*/
 }
 
 
@@ -188,7 +194,7 @@ footer {
 	color: #ffab00;
 	text-align: right;
 	/*line-height: 10px;*/
-	/*padding-top: 25px;*/
+	/*margin-top: 25px;*/
 	/*padding-bottom: 15px;*/
 	/*padding: 10px;*/
 	/*padding-top: 20px;*/
@@ -227,6 +233,10 @@ footer h6 {
 	float: left;
 }
 
+.project {
+	margin-bottom: 15px;
+}
+
 .screenshot {
 	background-repeat: no-repeat;
 	border: 5px solid #212121;
@@ -234,15 +244,43 @@ footer h6 {
 	background-size: cover;
 	display: block;
 	margin: 20px;
-	height: 250px;
-	width: 450px;
-	/*float: left;*/
+	height: 270px;
+	width: 400px;
+	float: left;
 }
 
 .description {
 	height: 300px;
-	width: 300px;
+	width: 450px;
+	/*padding-top: 15px;*/
+	margin: 0;
+	padding-bottom: 60px;
 }
+
+
+
+.description a, h4 {
+	color: white;
+}
+
+.description p, h1 {
+	color: #ffab00;
+
+}
+
+.description span {
+	color: #212121;
+}
+
+.description a:hover {
+	color: #212121;
+
+}
+
+.built {
+	color: #ffab00;
+}
+
 
 .form {
 	width: 50%;

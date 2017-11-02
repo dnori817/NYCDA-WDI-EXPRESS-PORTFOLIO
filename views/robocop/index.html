@@ -1,0 +1,530 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="assets/OCP.ico">
+	<title>RoboCop</title>
+    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            /*background-color: black;*/
+            background-image: url("assets/pageBG5.jpg");
+        }
+
+        #controls{
+            float: right;
+            padding-right: 5px;
+            height: 450px;
+            width:200px;
+            border-radius: 10px;
+            padding-left: 10px;
+            text-align: right;
+            
+        
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        h1, h3 {
+            color: #990000;
+            font-family: Arial;
+        }
+
+        div img {
+
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <div id="controls">
+        <h1>CONTROLS</h1>
+        <br>
+        <img src="assets/LRKeys.png">
+        <h3>Move Left/Right</h3>
+        <br>
+        <img src="assets/upKey.png">
+        <h3>Jump</h3>
+        <br>
+        
+
+        <img src="assets/space.png">
+        <h3>Fire!</h3>
+    </div>
+
+
+<script type="text/javascript">
+
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+	function preload() {
+        game.load.image('title', 'assets/title.jpg');
+
+        game.load.image('logo', 'assets/logo.png');
+	    game.load.image('sky', 'assets/bgstreet.gif');
+   		game.load.image('ground', 'assets/beam.jpg');
+    	game.load.image('star', 'assets/cash.png');
+    	game.load.spritesheet('robo', 'assets/roboSpritesheet.png', 50, 75);
+        //game.load.spritesheet('enemy', 'assets/ed2.png', 108, 130, 8);
+        game.load.image('bullet', 'assets/bullet.png');
+        
+        game.load.spritesheet('ed', 'assets/ed2.png', 108, 130, 8);
+
+        game.load.image('fireball', 'assets/fireball.png');
+        game.load.spritesheet('explosion', 'assets/explosion.png', 144,140, 14);
+        game.load.audio('theme', 'assets/theme.mp3');
+        game.load.audio('shot', 'assets/rcshot.mp3');
+        game.load.audio('edShot', 'assets/edShot.mp3');
+        game.load.audio('explode', 'assets/explode.mp3');
+        game.load.audio('hit', 'assets/hit.mp3');
+        game.load.audio('cash', 'assets/cash.mp3');
+
+	}
+
+    var title;
+    
+    var logo;
+    var music;
+    var shot;
+    var edShot;
+    var explode;
+    var hit;
+    var cash;
+
+	var player;
+	var platforms;
+	var cursors;
+    
+    var enemy;
+    var spaceKey;
+    var facing;
+    var bullet;
+
+	var stars;
+	var score = 0;
+	var scoreText;
+
+    
+    var enemyText;
+    var enemyHP;
+    var boom;
+    var winText;
+    var gameOver;
+
+
+
+
+
+function create() {
+
+
+    
+    
+    //  We're going to be using physics, so enable the Arcade Physics system
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    //  A simple background for our game
+    game.add.sprite(0, 0, 'sky');
+
+    //  The platforms group contains the ground and the 2 ledges we can jump on
+    platforms = game.add.group();
+
+    //  We will enable physics for any object that is created in this group
+    platforms.enableBody = true;
+
+    // Here we create the ground.
+    var ground = platforms.create(0, game.world.height - 32, 'ground');
+
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    ground.scale.setTo(2, 2);
+
+    //  This stops it from falling away when you jump on it
+    ground.body.immovable = true;
+
+    //  Now let's create two ledges
+    var ledge = platforms.create(320, 400, 'ground');
+
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(0, 200, 'ground');
+
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(625, 300, 'ground');
+
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(-150, 120, 'ground');
+
+    ledge.body.immovable = true;
+
+    // var enemy = game.add.sprite(500, 440, 'enemy');
+
+    // //  Here we add a new animation called 'walk'
+    // //  Because we didn't give any other parameters it's going to make an animation from all available frames in the 'enemy' sprite sheet
+    // var walk = enemy.animations.add('walk');
+
+    // //  And this starts the animation playing by using its key ("walk")
+    // //  30 is the frame rate (30fps)
+    // //  true means it will loop when it finishes
+    //enemy.animations.play('walk', 10, true);
+    
+    
+    spawnEnemy();
+
+
+
+
+
+
+    // The player and its settings
+    //playerHP = 100
+    player = game.add.sprite(32, game.world.height - 700, 'robo');
+
+    //  We need to enable physics on the player
+    game.physics.arcade.enable(player);
+
+    //  Player physics properties. Give the little guy a slight bounce.
+    player.body.bounce.y = 0.1;
+    player.body.gravity.y = 700;
+    player.body.collideWorldBounds = true;
+
+    //  Our two animations, walking left and right. 
+    player.animations.add('left', [12, 11, 10, 9, 8], 10, true);
+    player.animations.add('right', [2, 3, 4, 5, 6], 10, true);
+    
+
+    //  Finally some stars to collect
+    stars = game.add.group();
+
+    //  We will enable physics for any star that is created in this group
+    stars.enableBody = true;
+
+    //  Here we'll create 12 of them evenly spaced apart
+    for (var i = 2; i < 12; i++)
+    {
+        //  Create a star inside of the 'stars' group
+        var star = stars.create(i * 70, 0, 'star');
+
+        //  Let gravity do its thing
+        star.body.gravity.y = 300;
+
+        //  This just gives each star a slightly random bounce value
+        star.body.bounce.y = 0.7 + Math.random() * 0.2;
+    }
+
+    
+
+    //  The score
+    scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#990000' });
+
+    //  Our controls.
+    cursors = game.input.keyboard.createCursorKeys();
+    spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+    bullets = game.add.group();
+    game.physics.enable(bullets, Phaser.Physics.ARCADE);
+
+    fireballs = game.add.group();
+    game.physics.enable(fireballs, Phaser.Physics.ARCADE);
+
+
+
+    var sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+
+    sprite.anchor.setTo(0.5, 1.0);
+    sprite.alpha = 0;
+
+    game.add.tween(sprite).to( { alpha: 1 }, 5000, Phaser.Easing.Linear.None, true, 0, 0, true);
+
+
+    title = game.add.sprite(0, 0, 'title');
+    title.fixedToCamera = true;
+    spaceKey.onDown.add(removeTitle, this);
+
+    
+ 
+
+}
+
+function removeTitle () {
+
+    spaceKey.onDown.remove(removeTitle, this);
+    title.kill();
+    music = game.add.audio('theme');
+
+    music.play();
+
+}
+
+var enemyHP = 100;   
+function spawnEnemy() {
+  enemy = game.add.sprite(200,440,'ed');
+  game.physics.enable(enemy, Phaser.Physics.ARCADE);
+  enemy.body.gravity.y = 500;
+  enemy.body.collideWorldBounds = true;
+  enemy.body.fixedRotation = true;
+  enemy.frame = 1;
+  enemy.animations.add('walking_left', [0,1,2], 6, true);
+  enemy.animations.add('walking_right', [2,1,0], 6, true);
+  enemyText = game.add.text(enemy.body.x, enemy.body.y - 30, enemyHP);
+    }
+
+
+
+//fire gun
+    var shotTimer = 0; 
+    function shoot() {
+        if (shotTimer < game.time.now) {
+            shotTimer = game.time.now + 300 ;
+            var bullet ;
+            if (facing == 'left') {
+                bullet = bullets.create(player.body.x + player.body.width / 2 + 20, player.body.y + player.body.height / 2 - 4, 'bullet');
+            } else {
+                bullet = bullets.create(player.body.x + player.body.width / 2 - 20, player.body.y + player.body.height / 2 - 4, 'bullet');
+            }
+            game.physics.enable(bullet, Phaser.Physics.ARCADE);
+            bullet.outOfBoundsKill = true;
+            bullet.anchor.setTo(-1.2, 1.1);
+            bullet.body.velocity.y = 0;
+            if (facing == 'left') { 
+                bullet.body.velocity.x = -400  ;
+            } else {
+                bullet.body.velocity.x =  400;
+            }
+            shot = game.add.audio('shot');
+
+            shot.play();
+        }
+
+
+    }
+
+var shotTimerEnemy = 0;
+function enemyShoots() {
+  if (shotTimerEnemy < game.time.now) {
+    shotTimerEnemy = game.time.now + 2500;
+    var fireball;
+    if (facingEnemy == 'right') {
+      fireball = fireballs.create(enemy.body.x + enemy.body.width / 2 - 45, enemy.body.y + enemy.body.height / 2 + 5, 'fireball');
+
+    } else {
+      fireball = fireballs.create(enemy.body.x + enemy.body.width / 2 - 45, enemy.body.y + enemy.body.height / 2 + 5, 'fireball');
+    }
+    game.physics.enable(fireball, Phaser.Physics.ARCADE);
+    fireball.body.gravity.y = 20;
+    fireball.body.bounce.y = 0; 
+    fireball.outOfBoundsKill = true;
+    fireball.anchor.setTo(1.2, 0.5);
+    fireball.body.velocity.y = 0;
+    if (facingEnemy == 'right') {
+      fireball.body.velocity.x = -400;
+    } else {
+      fireball.body.velocity.x = -400;
+    }
+    edShot = game.add.audio('edShot');
+
+    edShot.play();
+
+    
+  }
+
+
+
+}
+
+
+function hitEnemy(enemy,bullet){
+  bullet.kill();
+  enemyHP -= 20;
+  hit = game.add.audio('hit');
+
+  hit.play();
+
+
+} 
+
+
+
+gameState = true;
+function enemyDies() {
+  boom = game.add.sprite(enemy.body.x - 50, enemy.body.y - 20, 'explosion');
+  game.physics.enable(boom, Phaser.Physics.ARCADE);
+  boom.animations.add('death', null, 25);
+  boom.animations.play('death');
+  enemy.kill();
+  explode = game.add.audio('explode');
+  explode.play();
+
+  
+  
+  setTimeout(function() {game.world.remove(boom);},550);
+
+
+  winText = game.add.text(game.width / 2 - 150, game.height / 2 - 75, "YOU WIN!", {font: "70px Arial", fill: "#990000"});
+
+}
+var pathCounter = 0;
+function enemyPath() {
+  if (pathCounter > 325)  {
+    enemy.animations.play('walking_right');
+    enemy.body.velocity.x = -100;
+    facingEnemy = 'right';
+  } else {
+    enemy.animations.play('walking_left');
+    enemy.body.velocity.x = 100;
+    facingEnemy = 'left';
+  }
+} 
+
+function updateEnemyHP() {
+  enemyText.destroy();
+  enemyText = game.add.text(enemy.body.x + 40, enemy.body.y + 129, enemyHP);
+} 
+    
+    function playerDies(){
+    boom = game.add.sprite(player.body.x - 50, player.body.y - 20, 'explosion');
+    game.physics.enable(boom, Phaser.Physics.ARCADE);
+    boom.animations.add('death', null, 25);
+    boom.animations.play('death');
+    player.kill();
+    explode = game.add.audio('explode');
+    explode.play();
+     
+    game.input.keyboard.removeKey(Phaser.Keyboard.SPACEBAR);
+    setTimeout(function() {game.world.remove(boom);},550);
+    gameOver = game.add.text(game.width / 2 - 200, game.height / 2, "GAME OVER", {font: "70px Arial", fill: "#990000"});
+
+   }
+
+
+ 
+
+function update() {
+  
+    pathCounter += 1;
+  if (pathCounter >= 650) {
+    pathCounter = 0;
+  }
+
+  if (enemyHP > 0) {
+    enemyPath();
+    enemyShoots();
+  }
+
+  updateEnemyHP();
+  
+		//  Collide the player and the stars with the platforms
+    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(stars, platforms);
+    game.physics.arcade.collide(player, enemy);
+    game.physics.arcade.collide(enemy, platforms);
+
+    game.physics.arcade.collide(bullets,enemy, hitEnemy, null, this);
+
+    game.physics.arcade.collide(fireballs,platforms);
+
+    game.physics.arcade.collide(fireballs,player, playerDies, null, this);
+    game.physics.arcade.overlap(enemy,player, playerDies, null, this);
+   
+
+
+    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+
+
+  
+
+    //  Reset the players velocity (movement)
+    player.body.velocity.x = 0;
+
+    if (cursors.left.isDown)
+    {
+        //  Move to the left
+        player.body.velocity.x = -150;
+
+        player.animations.play('left');
+    }
+    else if (cursors.right.isDown)
+    {
+        //  Move to the right
+        player.body.velocity.x = 150;
+
+        player.animations.play('right');
+    }
+    else
+    {
+        //  Stand still
+        player.animations.stop();
+
+        player.frame = 0;
+    }
+
+    //  Allow the player to jump if they are touching the ground.
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.body.velocity.y = -500;
+
+
+    }
+
+ spaceKey.onDown.add(shoot,this);
+
+    if (spaceKey.isDown) 
+    {
+        player.frame = 7;
+
+        //shoot();
+        player.body.velocity.x = 0;
+    } 
+
+   
+
+
+
+
+    if (cursors.up.isDown)
+    {
+        player.frame = 15;
+    }
+  
+    if (enemyHP <= 0 && gameState) {
+    enemyDies();
+    gameState = false;
+}
+
+
+
+
+    
+}
+
+
+        
+
+
+
+
+
+
+function collectStar (player, star) {
+    
+    // Removes the star from the screen
+    star.kill();
+    cash = game.add.audio('cash');
+
+    cash.play();
+
+
+    //  Add and update the score
+    score += 50;
+    scoreText.text = 'Score: ' + score;
+
+}
+
+</script>
+
+</body>
+</html>
