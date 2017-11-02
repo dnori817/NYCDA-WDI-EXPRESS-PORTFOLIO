@@ -25,7 +25,6 @@ a {
 body {
 	background-color: #009688;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
-	color: #212121;
 }
 
 nav {
@@ -66,9 +65,13 @@ header {
 	padding-bottom: 40px;
 }
 
+#contact h4 {
+	color: #ffab00;
+
+}
+
 #contact div {
 	margin-bottom: 30px;
-	color: #ffab00;
 
 }
 
@@ -80,7 +83,7 @@ header {
 
 .contact-page-link:hover {
 		color: #212121;
-		/*color: white;*/
+
 }
 
 
@@ -255,6 +258,11 @@ footer h6 {
 	/*padding-top: 15px;*/
 	margin: 0;
 	padding-bottom: 60px;
+}
+
+.gh {
+	height: 24px;
+	width: 24px;
 }
 
 
