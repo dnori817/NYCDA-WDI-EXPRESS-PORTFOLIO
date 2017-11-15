@@ -45,13 +45,11 @@ header {
 
 #name {
 	color: #ffab00;
-	padding-left: 10px;
-	padding-bottom: 5px;
+	padding-left: 25px;
 	font-size: 120px;
 	text-shadow: 1px 1px 1px rgba(33, 33, 33, 0.9);
 	/*margin-bottom: 0px;
 	margin-top: 0px;*/
-	margin: 0px;
 	width: 50%;
 
 
@@ -115,7 +113,6 @@ header {
 
 .header-contact {
 	float: right;
-	padding: 10px;
 	margin-top: -130px;
 	text-align: right;
 	list-style: none;
@@ -143,7 +140,7 @@ header {
 	float: right;
 	/*display: inline;*/
 	font-size: 40px;
-	padding-right: 20px;
+	padding: 15px;
 	color: white;
 	text-decoration: none;
 	list-style: none;
@@ -332,9 +329,7 @@ li {
 @media all and (max-width: 700px){
 	#name {
 		font-size: 68px;
-		margin: 10px;
-		margin-top: 20px;
-		padding: 10px;
+		width: 40%
 	}
 
 	#title {
@@ -344,7 +339,7 @@ li {
 
 	#menu {
 		margin-right: 10px;
-		margin-top: -60px;
+		margin-top: -75px;
 	}
 
 }
